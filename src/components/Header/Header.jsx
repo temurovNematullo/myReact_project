@@ -1,11 +1,11 @@
-import ghoust from '../img/logoreact.png';
+import ghoust from '../../img/logoreact.png';
+import header from './Header.module.css';
 
 function Header() {
   return (
-    <div className="header"> 
-     
-      <header className="App-header">
-      <div className="logo">
+    <div className={header.header}> 
+      <header className={header.App_header}>
+      <div className={header.logo}>
         <img src={ghoust} alt="logo" />
       </div>
        hi btch)

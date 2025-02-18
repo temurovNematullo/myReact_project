@@ -1,0 +1,15 @@
+
+.main{
+  background-color: rgb(226, 219, 219);
+  width: 80%;
+  min-height: 100vh;
+  
+}
+
+.main__img img{
+width: 100%;
+height: 50vh;
+
+  
+}
+

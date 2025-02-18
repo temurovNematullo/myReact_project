@@ -1,0 +1,16 @@
+.post__title{
+    display: flex;
+    column-gap: 5vh;
+    padding-top: 3vh;
+    padding-inline: 1vh;
+  }
+
+  .post__title img{
+    width: 10%;
+    height: 5%;
+    border-radius: 50%;
+  }
+
+.post__txt{
+    padding-inline: 1vh;
+  }

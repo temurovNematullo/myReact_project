@@ -1,0 +1,14 @@
+.main__title{
+    display: flex;
+    column-gap: 5vh;
+    padding-top: 3vh;
+  }
+  
+  .main__title img{
+    width: 25%;
+    height: 25%;
+  }
+  
+  .main__txt{
+    padding-inline: 1vh;
+  }

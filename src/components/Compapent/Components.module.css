@@ -1,0 +1,15 @@
+.sidebarAndMain {
+  display: flex;
+  flex-direction: row;
+  padding-inline: 10vh;
+  column-gap: 5vh;
+  align-items: flex-start;
+  margin-top: 5vh;
+}
+
+.sidebar{
+  background-color: rgb(200, 193, 193);
+  padding-inline: 1vh;
+  width: 20%;
+  min-height: 100vh;
+}
