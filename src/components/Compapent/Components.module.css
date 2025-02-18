@@ -13,3 +13,10 @@
   width: 20%;
   min-height: 100vh;
 }
+
+.main{
+  background-color: rgb(226, 219, 219);
+  width: 80%;
+  min-height: 100vh;
+  
+}
