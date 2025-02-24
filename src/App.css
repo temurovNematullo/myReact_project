@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 .App{
   background-image: url(https://storage.googleapis.com/pixelator-app/201/042fe25a-f9e4-494f-ba47-e81061ebd0c6.png);
   background-size: cover;
+  font-family: 'Press Start 2P';
 }
 
-
+a{
+ all: unset ;
+}
 
 
 

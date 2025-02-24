@@ -7,8 +7,74 @@
   .main__title img{
     width: 25%;
     height: 25%;
+    
+
   }
   
   .main__txt{
     padding-inline: 1vh;
   }
+
+  .AddNewPost{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    column-gap: 2vh;
+    padding-inline: 2vh;
+  
+  }
+  .UserInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2vh;
+    padding-inline: 1vh;
+  }
+
+  .addPost_button {
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+    font-size: 16px;
+    background-color: rgb(255, 220, 180); 
+    color: black;
+    border: 4px solid rgb(100, 80, 60);
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 10%;
+    height: auto;
+    
+    /* Имитация пиксельных краёв */
+    image-rendering: pixelated;
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transition: all 0.1s linear;
+  }
+  
+  .addPost_button:active {
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transform: translate(2px, 2px);
+  }
+
+  .textareaPost {
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+    font-size: 12px;
+    background-color: rgb(245, 235, 220); /* Светло-жёлтый фон (чтобы гармонировал с кнопкой) */
+    color: black;
+    border: 4px solid rgb(100, 80, 60);
+    padding: 10px;
+    width: 40%;
+    height: 5vh;
+    resize: none;
+    
+    /* Имитация пиксельных краёв */
+    image-rendering: pixelated;
+    box-shadow: 4px 4px 0px rgb(80, 60, 40);
+    transition: all 0.1s linear;
+  }
+  
+  .textareaPost:focus {
+    outline: none;
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transform: translate(2px, 2px);
+  }
+  

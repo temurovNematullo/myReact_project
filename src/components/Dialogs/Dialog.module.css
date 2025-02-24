@@ -1,0 +1,100 @@
+
+.dialogs{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    padding: 20px;
+   column-gap: 20px;
+}
+
+.dialogs__list{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border-right: 3px solid #000;
+    font-size: 2vh;
+    row-gap: 2vh;
+
+}
+
+.messages{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    width: 70%;
+    padding-inline: 1vh;
+    color: black;
+}
+
+.dialogs__item {
+    display: flex;
+    align-items: center;
+    column-gap: 2vh;
+    color: black;
+}
+
+.dialogs__item:hover{
+    color: rgb(200, 193, 193);
+}
+
+.avatar{
+width: 50px;
+height: 50px;
+
+}
+
+.addMessage{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 2vh;
+    padding-inline: 1vh;
+  
+  }
+
+.addNewMessage_button{
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+    font-size: 16px;
+    background-color: rgb(255, 220, 180); 
+    color: black;
+    border: 4px solid rgb(100, 80, 60);
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    width: 20%;
+    /* Имитация пиксельных краёв */
+    image-rendering: pixelated;
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transition: all 0.1s linear;
+  }
+  
+  .addNewMessage_button:active {
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transform: translate(2px, 2px);
+  }
+
+  .textareaNewMessage {
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+    font-size: 14px;
+    background-color: rgb(245, 235, 220); /* Светло-жёлтый фон (чтобы гармонировал с кнопкой) */
+    color: black;
+    border: 4px solid rgb(100, 80, 60);
+    padding: 10px;
+    width: 45%;
+    height: 5vh;
+    resize: none;
+    
+    /* Имитация пиксельных краёв */
+    image-rendering: pixelated;
+    box-shadow: 4px 4px 0px rgb(80, 60, 40);
+    transition: all 0.1s linear;
+  }
+  
+  .textareaNewMessage:focus {
+    outline: none;
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transform: translate(2px, 2px);
+  }
+  
