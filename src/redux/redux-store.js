@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import MainPageReducer from './mainPageReducer';
 import DialogPageReducer from './dialogPageReducer';
 

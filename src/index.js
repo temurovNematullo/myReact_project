@@ -2,28 +2,19 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { Provider } from "react-redux";  // ✅ Добавляем Redux Provider
 import App from './App';
 import store from './redux/redux-store';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//Получаем state вызывающей стороны тоесть файла state.js
-export let renderEntireTree = (state) => {
 
 root.render(
   <React.StrictMode>
-
-    <App stateData = {state} dispatch = {store.dispatch.bind(store)}  store = {store} />
+    <Provider store={store}> {/* ✅ Оборачиваем App в Provider */}
+      <App />
+    </Provider>
   </React.StrictMode>
 );
-}
-renderEntireTree(store.getState());
 
-store.subscribe( () => {
-  let state =(store.getState())
-  renderEntireTree(state)
-} );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// ❌ Удаляем renderEntireTree и store.subscribe, они больше не нужны!
 reportWebVitals();

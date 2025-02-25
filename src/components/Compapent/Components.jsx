@@ -3,7 +3,7 @@ import Main from '../Main/Main';
 import comp from './Components.module.css';
 import { Routes, Route, Link } from 'react-router-dom';
 import {  useLocation } from 'react-router-dom';
-import DialogContainer from '../Dialogs/DialogContainer';
+import Dialog from '../Dialogs/Dialog';
 
 function Components(props) {
 
@@ -49,9 +49,9 @@ function Components(props) {
         <div className={comp.main}>
           
           <Routes>
-          <Route path="/main" element={<Main store = {props.store}  />} />
+          <Route path="/main" element={<Main />} />
           
-          <Route path="/dialog" element={<DialogContainer store = {props.store} />} />
+          <Route path="/dialog" element={<Dialog/>} />
             <Route path="/news" element={<h1>News Page</h1>} />
             <Route path="/clips" element={<h1>Clips Page</h1>} />
             <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 

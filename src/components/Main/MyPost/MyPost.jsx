@@ -1,60 +1,44 @@
-import { type } from '@testing-library/user-event/dist/type';
-import samurai from '../../../img/samurai.png';
-import mypost from './MyPost.module.css';
-import Post from './Post/Post';
-import React from 'react';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addNewPost, updatePost } from "../../../redux/mainPageReducer";
+import samurai from "../../../img/samurai.png";
+import mypost from "./MyPost.module.css";
+import Post from "./Post/Post";
 
-
-
-function MyPost(props) {
-
-
-  let newPostText = props.newPostText; 
+export default function MyPost() {
+  const dispatch = useDispatch();
   
-  let addpost = () => {
+  // Получаем данные из Redux
+  const posts = useSelector((state) => state.MainPage.postData);
+  const newPostText = useSelector((state) => state.MainPage.newPostText);
 
-    if (newPostText.trim() !== "") { // Проверяем, что сообщение не пустое
-      
-      props.AddNewPost()
-        }
-
-  
-}
-
-let changePost = (event) => {
-  let PostText = event.target.value;
-  props.UpdatePost(PostText)
-
-
-}
-
-  let postElements = props.Posts.map( post => <Post message = {post.message} id = {post.id}/>)
-
-return (
+  return (
     <div>
-<div className={mypost.main__title}>
-<img src= {samurai}/>
-<div className={mypost.UserInfo}>
-<span className={mypost.main__txt}>Component 1 is the best component. 
-</span>
-<span className={mypost.main__txt}>Component 1 is the best component.  
-</span>
-</div>
-</div>
-<div className={mypost.AddNewPost} >
-
-  <textarea className={mypost.textareaPost} 
-  name={mypost.PostText}  onChange={changePost} 
-  value={newPostText} />
-
-
-  <button className={mypost.addPost_button} onClick={addpost}>Add post</button>
-</div>
-  <div className={mypost.postHave}>
- {postElements}
- </div>
-  </div>
-)
+      <div className={mypost.main__title}>
+        <img src={samurai} />
+        <div className={mypost.UserInfo}>
+          <span className={mypost.main__txt}>Component 1 is the best component.</span>
+          <span className={mypost.main__txt}>Component 1 is the best component.</span>
+        </div>
+      </div>
+      <div className={mypost.AddNewPost}>
+        <textarea
+          className={mypost.textareaPost}
+          value={newPostText}
+          onChange={(event) => dispatch(updatePost(event.target.value))}
+        />
+        <button
+          className={mypost.addPost_button}
+          onClick={() => newPostText.trim() !== "" && dispatch(addNewPost())}
+        >
+          Add post
+        </button>
+      </div>
+      <div className={mypost.postHave}>
+        {posts.map((post) => (
+          <Post key={post.id} message={post.message} id={post.id} />
+        ))}
+      </div>
+    </div>
+  );
 }
-
-export default MyPost;
