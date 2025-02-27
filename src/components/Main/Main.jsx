@@ -3,6 +3,7 @@ import main from './Main.module.css';
 import MyPost from './MyPost/MyPost';
 
 function Main(props) {
+
   return (
 
     <main className={main.main}>

@@ -16,5 +16,5 @@ root.render(
   </React.StrictMode>
 );
 
-// ❌ Удаляем renderEntireTree и store.subscribe, они больше не нужны!
+
 reportWebVitals();

@@ -7,6 +7,7 @@ const initialState = {
     { id: 3, message: "Pixel I love PIXCEL)" },
   ],
   newPostText: "HI BITCH;)",
+  userProfile: {}
 };
 
 const mainPageSlice = createSlice({
@@ -24,11 +25,14 @@ const mainPageSlice = createSlice({
     updatePost: (state, action) => {
       state.newPostText = action.payload; // ✅ Обновляем `newPostText`
     },
+    setUserProfile: (state, action) => {
+      state.userProfile = action.payload; // ✅ Обновляем `newPostText`
+    },
   },
 });
 
 // Экспортируем экшены
-export const { addNewPost, updatePost } = mainPageSlice.actions;
+export const { addNewPost, updatePost, setUserProfile } = mainPageSlice.actions;
 
 // Экспортируем редьюсер
 export default mainPageSlice.reducer;
