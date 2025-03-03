@@ -1,25 +1,27 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
-import { follow, unfollow} from "../../../redux/userPageReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { getFollowing} from "../../../redux/userPageReducer";
 import samurai from "../../../img/samurai.png";
 import style from '../../Users/users.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 
 const UserItem = ({ user }) => {
   const dispatch = useDispatch();
+  const FollowingInProgress = useSelector((state)=> state.UserPage.followingInProgress);
+
+  const handleFollowClick = () => { 
+  dispatch(getFollowing(user));
+  };
 
   return (
-    
     <div className={style.UsersInfo}>
-    
       <div className={style.userInfo}>
-         <NavLink to="/main" > <img className={style.userImg} src={user.photos.small !== null ? user.photos.small : samurai} alt={user.name} /></NavLink>
-        <button 
-          className={style.userFollowButton} 
-          onClick={() => dispatch(user.followed ? unfollow(user.id) : follow(user.id))}
-        >
-          {user.followed ? "Unfollow" : "Follow"}
+        <NavLink to={`/main/${user.id}`}>
+          <img className={style.userImg} src={user.photos.small !== null ? user.photos.small : samurai} alt={user.name} />
+        </NavLink>
+        <button disabled={FollowingInProgress.some(id=>id === user.id)} className={style.userFollowButton} onClick={handleFollowClick}>
+          {user.followed ? "Unfollow" : "Follow"} 
         </button>
       </div>
       <div className={style.userLocationList}>

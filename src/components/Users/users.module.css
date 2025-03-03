@@ -55,6 +55,14 @@
     box-shadow: 2px 2px 0px rgb(80, 60, 40);
     transform: translate(2px, 2px);
   }
+  
+.userFollowButton:disabled {
+    box-shadow: none;
+    transform: none;
+    background-color: lightgray;
+    border-color: gray;
+  }
+  
 .statustext{
     color: rgb(144, 133, 121);
 }

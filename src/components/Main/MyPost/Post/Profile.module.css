@@ -1,0 +1,53 @@
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 80%;
+    margin: 0px auto;
+    
+  }
+  
+  .profileHeader {
+    text-align: center;
+  }
+  
+  .profileImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #ddd;
+  }
+  
+  .profileDetails {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .contactsList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
+  
+  .contactItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background: #cab9b9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contactItem a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .contactItem a:hover {
+    text-decoration: underline;
+  }
+  

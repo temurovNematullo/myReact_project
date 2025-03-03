@@ -1,4 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ProfileAPI } from "../API/API";
+import {toggleIsFetch} from "../redux/userPageReducer";
+
 
 const initialState = {
   postData: [
@@ -26,7 +29,7 @@ const mainPageSlice = createSlice({
       state.newPostText = action.payload; // ✅ Обновляем `newPostText`
     },
     setUserProfile: (state, action) => {
-      state.userProfile = action.payload; // ✅ Обновляем `newPostText`
+      state.userProfile = action.payload; 
     },
   },
 });
@@ -34,5 +37,17 @@ const mainPageSlice = createSlice({
 // Экспортируем экшены
 export const { addNewPost, updatePost, setUserProfile } = mainPageSlice.actions;
 
+export const getUserProfile = (userId) =>{
+  return (dispatch) =>{
+
+if (!userId) return;
+    dispatch(toggleIsFetch(true));
+   ProfileAPI.GetProfileUser(userId).then(data => {
+      dispatch(toggleIsFetch(false));
+      dispatch(setUserProfile(data));
+    });
+    
+}
+}
 // Экспортируем редьюсер
 export default mainPageSlice.reducer;

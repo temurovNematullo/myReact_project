@@ -3,11 +3,6 @@ import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils";
 import MainPageReducer from "./mainPageReducer";
 import DialogPageReducer from "./dialogPageReducer"
 
-
-
-
-
-
 let store = {
    _state: {
  
