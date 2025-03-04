@@ -10,7 +10,8 @@ const initialState = {
     { id: 3, message: "Pixel I love PIXCEL)" },
   ],
   newPostText: "HI BITCH;)",
-  userProfile: {}
+  userProfile: {},
+  status: "HI BITCH;)"
 };
 
 const mainPageSlice = createSlice({
@@ -31,12 +32,16 @@ const mainPageSlice = createSlice({
     setUserProfile: (state, action) => {
       state.userProfile = action.payload; 
     },
+    setStatus: (state, action) => {
+      state.status = action.payload;
+    },
   },
 });
 
-// Экспортируем экшены
-export const { addNewPost, updatePost, setUserProfile } = mainPageSlice.actions;
+export const { addNewPost, updatePost, setUserProfile, setStatus } = mainPageSlice.actions;
 
+// Экспортируем редьюсер
+export default mainPageSlice.reducer;
 export const getUserProfile = (userId) =>{
   return (dispatch) =>{
 
@@ -49,5 +54,32 @@ if (!userId) return;
     
 }
 }
-// Экспортируем редьюсер
-export default mainPageSlice.reducer;
+
+export const getUserStatus = (userId) => {
+  return (dispatch) => {
+    if (!userId) return;
+
+    console.log(`Запрос на статус пользователя с id: ${userId}`);
+    ProfileAPI.GetStatus(userId)
+  .then(status => {
+    console.log("✅ Ответ от сервера:", status); // Проверяем, что сервер что-то вернул
+    dispatch(setStatus(status));
+  })
+  .catch(error => {
+    console.error("❌ Ошибка при получении статуса:", error.response?.data || error.message);
+  });
+
+  };
+};
+
+export const updateUserStatus = (status) => {
+  return (dispatch) => {
+    ProfileAPI.UpdateStatus(status).then(response => {
+      if (response.resultCode === 0) {
+        dispatch(setStatus(status));
+      }
+    });
+  };
+};
+
+

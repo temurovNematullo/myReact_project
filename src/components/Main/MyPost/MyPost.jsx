@@ -4,23 +4,26 @@ import { useEffect } from "react";
 import mypost from "./MyPost.module.css";
 import Post from "./Post/Post";
 import Preloader from '../../common/preloader/Preloader'
-import { addNewPost, updatePost, getUserProfile } from "../../../redux/mainPageReducer";
+import { addNewPost, updatePost, getUserProfile, getUserStatus } from "../../../redux/mainPageReducer";
 import styles from "./Post/Profile.module.css";
-
+import ProfileStatus from "./ProfileStatus";
 
 export default function MyPost(props) {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.MainPage.postData);
   const newPostText = useSelector((state) => state.MainPage.newPostText);
-
+  const status = useSelector((state) => state.MainPage.status)
+  const userProfileData = useSelector((state)=> state.MainPage.userProfile) 
   const {userId} = props
-
+  const authUserId = useSelector((state)=> state.Auth.userId)
+  
   useEffect(() => {
-   dispatch(getUserProfile(userId))
-  }, [userId,dispatch]);
+    if (userId) {
+      dispatch(getUserProfile(userId));
+      dispatch(getUserStatus(userId));
+    }
+  }, [userId, dispatch]);
    
-const userProfileData = useSelector((state)=> state.MainPage.userProfile) 
-
 
   return (
     <div>
@@ -44,6 +47,8 @@ const userProfileData = useSelector((state)=> state.MainPage.userProfile)
             <p><strong>Описание работы:</strong></p>
             <p>{userProfileData.lookingForAJobDescription}</p>
           </div>
+<ProfileStatus authUserId={authUserId} status={status} profileId={props.userId}/>
+          
 
           <h3>Контакты:</h3>
           {userProfileData.contacts ? (

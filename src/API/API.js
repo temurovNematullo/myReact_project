@@ -26,7 +26,20 @@ export const ProfileAPI = {
   GetProfileUser(userId){
     return  instance.get(`profile/${userId}`).then
     (response => response.data)
-  }
+  },
+  GetStatus(userId) {
+    return instance.get(`profile/status/${userId}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        console.error("❌ Ошибка в API-запросе:", error.response?.data || error.message);
+      });
+  },
+ UpdateStatus(status){
+  return instance.put( `profile/status`,{status}).then
+  (response=> response.data)
+ }
 }
 
 export const AuthAPI = {
