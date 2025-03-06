@@ -18,17 +18,17 @@ const mainPageSlice = createSlice({
   name: "MainPage",
   initialState,
   reducers: {
-    addNewPost: (state) => {
+    addNewPost: (state, action) => {
       const newPost = {
         id: state.postData.length + 1,
-        message: state.newPostText,
+        message: action.payload,
       };
       state.postData.push(newPost); // ✅ Можно мутировать `state` благодаря `immer`
       state.newPostText = ""; // ✅ Очищаем поле после добавления поста
     },
-    updatePost: (state, action) => {
-      state.newPostText = action.payload; // ✅ Обновляем `newPostText`
-    },
+    // updatePost: (state, action) => {
+    //   state.newPostText = action.payload; // ✅ Обновляем `newPostText`
+    // },
     setUserProfile: (state, action) => {
       state.userProfile = action.payload; 
     },

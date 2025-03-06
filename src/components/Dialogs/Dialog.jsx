@@ -1,27 +1,16 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateNewMessageBody, sendMessage } from '../../redux/dialogPageReducer';
+import { useSelector} from 'react-redux';
 import dilogs from './Dialog.module.css';
-import Dialogs__item from './Dialogs__item/Dialogitem';
+import DialogsItem from './Dialogs__item/Dialogitem';
 import Message from './Message/message';
+import DialogForm from './DialogForm';
 
 export default function Dialog() {
-  const dispatch = useDispatch();
-  const { userData, messagesData, newMessageBody } = useSelector(state => state.DialogPage);
-
-  const addMessageClick = () => {
-    if (newMessageBody.trim() !== "") {
-      dispatch(sendMessage());
-    }
-  };
-
-  const NewMessageChange = (event) => {
-    const body = event.target.value;
-    dispatch(updateNewMessageBody(body));
-  };
+ 
+  const { userData, messagesData } = useSelector(state => state.DialogPage);
 
   const userDataElements = userData.map(user => (
-    <Dialogs__item key={user.id} avatar={user.avatar} name={user.name} id={user.id} />
+    <DialogsItem key={user.id} avatar={user.avatar} name={user.name} id={user.id} />
   ));
 
   const messagesDataElements = messagesData.map(message => (
@@ -38,14 +27,8 @@ export default function Dialog() {
           {messagesDataElements}
         </div>
       </div>
-      <div className={dilogs.addMessage}>
-        <textarea
-          className={dilogs.textareaNewMessage}
-          value={newMessageBody}
-          onChange={NewMessageChange}
-        ></textarea>
-        <button className={dilogs.addNewMessage_button} onClick={addMessageClick}>Add message</button>
-      </div>
+    <DialogForm/>
     </div>
   );
 }
+

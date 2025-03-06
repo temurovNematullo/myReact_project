@@ -3,7 +3,7 @@ import ghoust from '../../img/logoreact.png';
 import header from './Header.module.css';
 import { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import { Authorization } from '../../redux/auth-reducer';
+import { Authorization, Logout } from '../../redux/auth-reducer';
 
 function Header() {
   const isAuth = useSelector((state) => state.Auth.isAuth);
@@ -11,8 +11,8 @@ function Header() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-  dispatch(Authorization())
-  });
+    dispatch(Authorization()); 
+});
 
   return (
     <div className={header.header}> 
@@ -27,6 +27,7 @@ function Header() {
 
      <div className={header.login}>
      <NavLink to={"/login"}> {isAuth ? login : "Login"}</NavLink>
+    {isAuth && <button onClick={() => dispatch(Logout())}>Logout</button>}
       </div>
       </header>
       

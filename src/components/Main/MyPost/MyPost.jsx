@@ -4,29 +4,39 @@ import { useEffect } from "react";
 import mypost from "./MyPost.module.css";
 import Post from "./Post/Post";
 import Preloader from '../../common/preloader/Preloader'
-import { addNewPost, updatePost, getUserProfile, getUserStatus } from "../../../redux/mainPageReducer";
+import { getUserProfile, getUserStatus } from "../../../redux/mainPageReducer";
 import styles from "./Post/Profile.module.css";
 import ProfileStatus from "./ProfileStatus";
+import PostForm from "./PostForm";
+
 
 export default function MyPost(props) {
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.MainPage.postData);
-  const newPostText = useSelector((state) => state.MainPage.newPostText);
+  const isAuth = useSelector((state) => state.Auth.isAuth);
+  const posts = useSelector((state) => state.MainPage.postData)
+ 
   const status = useSelector((state) => state.MainPage.status)
   const userProfileData = useSelector((state)=> state.MainPage.userProfile) 
   const {userId} = props
+  
   const authUserId = useSelector((state)=> state.Auth.userId)
+  console.log(authUserId)
   
   useEffect(() => {
-    if (userId) {
-      dispatch(getUserProfile(userId));
-      dispatch(getUserStatus(userId));
+    const currentUserId = userId || authUserId;
+    
+    console.log(currentUserId)
+    if (currentUserId) {
+      dispatch(getUserProfile(currentUserId));
+      dispatch(getUserStatus(currentUserId));
+     
     }
-  }, [userId, dispatch]);
+  }, [userId, authUserId, dispatch]);
    
 
   return (
     <div>
+      
     <div className={styles.profileContainer}>
       {userProfileData ? (
         <>
@@ -47,9 +57,9 @@ export default function MyPost(props) {
             <p><strong>Описание работы:</strong></p>
             <p>{userProfileData.lookingForAJobDescription}</p>
           </div>
+
 <ProfileStatus authUserId={authUserId} status={status} profileId={props.userId}/>
           
-
           <h3>Контакты:</h3>
           {userProfileData.contacts ? (
             <div className={styles.contactsList}>
@@ -70,25 +80,30 @@ export default function MyPost(props) {
       ) : (
         <Preloader />
       )}
-    </div>
-      <div className={mypost.AddNewPost}>
-        <textarea
-          className={mypost.textareaPost}
-          value={newPostText}
-          onChange={(event) => dispatch(updatePost(event.target.value))}
-        />
-        <button
-          className={mypost.addPost_button}
-          onClick={() => newPostText.trim() !== "" && dispatch(addNewPost())}
-        >
-          Add post
-        </button>
+    </div> 
+    {isAuth && (
+      <div>
+        <PostForm/>
+        <div className={mypost.postHave}>
+          {posts.map((post) => (
+            <Post key={post.id} message={post.message} id={post.id} />
+          ))}
+        </div>
       </div>
-      <div className={mypost.postHave}>
-        {posts.map((post) => (
-          <Post key={post.id} message={post.message} id={post.id} />
-        ))}
-      </div>
+    )}
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

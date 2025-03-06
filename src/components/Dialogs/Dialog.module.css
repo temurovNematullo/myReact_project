@@ -98,3 +98,6 @@ height: 50px;
     transform: translate(2px, 2px);
   }
   
+  .textareaNewMessage.error{
+    border: 4px solid rgb(145, 39, 39);
+  }

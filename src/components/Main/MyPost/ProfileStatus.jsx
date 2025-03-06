@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { updateUserStatus } from "../../../redux/mainPageReducer"; 
+import { useDispatch, useSelector } from "react-redux";
+import { updateUserStatus } from "../../../redux/mainPageReducer";
 
 const ProfileStatus = (props) => {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
+const isAuth = useSelector((state) => state.Auth.isAuth);
 
     useEffect(() => {
-        if (status !== props.status) {
-            setStatus(props.status);
-        }
+        setStatus(props.status);
         console.log("Компонент обновился!");
     }, [props.status]);
 
@@ -19,11 +18,10 @@ const ProfileStatus = (props) => {
     };
 
     const deactivateEditMode = () => {
-        setEditMode(false);
-       
-        if (props.authUserId === props.profileId) {
+        if (isAuth) {
             dispatch(updateUserStatus(status));
         }
+        setEditMode(false);
     };
 
     const onStatusChange = (e) => {
@@ -34,7 +32,8 @@ const ProfileStatus = (props) => {
         <div>
             {!editMode &&
                 <div>
-                    <span onDoubleClick={activateEditMode}>{props.status || "No status"}</span>
+                   <span onDoubleClick={isAuth ? activateEditMode : undefined}>
+                {props.status || "No status"}</span>
                 </div>
             }
             {editMode &&

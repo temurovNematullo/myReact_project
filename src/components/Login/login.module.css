@@ -1,0 +1,65 @@
+input{
+    
+}
+
+.emailInput{
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+    font-size: 14px;
+    background-color: rgb(245, 235, 220); /* Светло-жёлтый фон (чтобы гармонировал с кнопкой) */
+    color: black;
+    border: 4px solid rgb(100, 80, 60);
+    padding: 10px;
+    width: 25%;
+    height: 3vh;
+    resize: none;
+    
+    /* Имитация пиксельных краёв */
+    image-rendering: pixelated;
+    box-shadow: 4px 4px 0px rgb(80, 60, 40);
+    transition: all 0.1s linear;
+}
+
+.logForm{
+    display: flex;
+    flex-direction: column;
+    padding: 10vh;
+    row-gap: 2vh;
+}
+
+.emailInput:focus {
+    outline: none;
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transform: translate(2px, 2px);
+  }
+
+ 
+
+  .logButton {
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+    font-size: 16px;
+    background-color: rgb(255, 220, 180); 
+    color: black;
+    border: 4px solid rgb(100, 80, 60);
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 150px;
+    height: auto;
+    
+    /* Имитация пиксельных краёв */
+    image-rendering: pixelated;
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transition: all 0.1s linear;
+  }
+  
+  .logButton:active {
+    box-shadow: 2px 2px 0px rgb(80, 60, 40);
+    transform: translate(2px, 2px);
+  }
+
+  .emailInput.error{
+    border: 4px solid rgb(145, 39, 39);
+  }
+  .errorRow{
+    border: 4px solid rgb(145, 39, 39);
+  }

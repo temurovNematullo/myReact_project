@@ -44,13 +44,13 @@ const dialogPageSlice = createSlice({
   name: 'dialogPage',
   initialState,
   reducers: {
-    updateNewMessageBody: (state, action) => {
-      state.newMessageBody = action.payload;
-    },
-    sendMessage: (state) => {
+    // updateNewMessageBody: (state, action) => {
+    //   state.newMessageBody = action.payload;
+    // },
+    sendMessage: (state, action) => {
       const newMessage = {
         id: state.messagesData.length + 1,
-        message: state.newMessageBody
+        message: action.payload
       };
       state.messagesData.push(newMessage);
       state.newMessageBody = '';

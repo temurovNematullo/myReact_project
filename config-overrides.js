@@ -8,16 +8,15 @@ module.exports = override((config) => {
       crypto: require.resolve("crypto-browserify"),
       stream: require.resolve("stream-browserify"),
       buffer: require.resolve("buffer"),
-      process: require.resolve("process/browser"),
+      process: false, // Убираем process/browser
       vm: false
     },
   };
 
-  // Add a plugin to provide the Buffer and process globals
+  // Добавляем плагины
   config.plugins.push(
     new (require("webpack").ProvidePlugin)({
-      Buffer: ["buffer", "Buffer"],
-      process: "process/browser",
+      Buffer: ["buffer", "Buffer"]
     })
   );
 

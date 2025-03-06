@@ -1,8 +1,8 @@
 import dilogs from './../Dialog.module.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
- export default function Dialogs__item(props) {
+ export default function DialogsItem(props) {
   const location = useLocation();
   let adress = `/dialog/${props.id}`;
   return (

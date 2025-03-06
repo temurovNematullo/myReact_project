@@ -6,7 +6,7 @@ const initialState = {
   pageSize: 3,
   currentPage: 1,
   totalUsersCount: 0,
-  isFetch: Boolean,
+  isFetch: null,
   followingInProgress: [] ,
   isFetching: null
 };
