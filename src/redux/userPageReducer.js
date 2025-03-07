@@ -15,16 +15,10 @@ const userPageSlice = createSlice({
   name: "UserPage",
   initialState,
   reducers: {
-    follow: (state, action) => {
-      const user = state.userData.find(user => user.id === action.payload);
+    updateFollowStatus: (state, action) => {
+      const user = state.userData.find(user => user.id === action.payload.userId);
       if (user) {
-        user.followed = true;
-      }
-    },
-    unfollow: (state, action) => {
-      const user = state.userData.find(user => user.id === action.payload);
-      if (user) {
-        user.followed = false;
+        user.followed = action.payload.followed;
       }
     },
     setUsers: (state, action) => {
@@ -50,7 +44,7 @@ const userPageSlice = createSlice({
 });
 
 // Export actions
-export const { setCurrentPage, toggleIsFetch, toggleFollowingInProgress, unfollow, follow, setUsers, setTotalUsersCount } = userPageSlice.actions;
+export const { setCurrentPage, toggleIsFetch, toggleFollowingInProgress, updateFollowStatus, setUsers, setTotalUsersCount } = userPageSlice.actions;
 
 
  export const getFollowing = (user) =>{
@@ -60,7 +54,7 @@ export const { setCurrentPage, toggleIsFetch, toggleFollowingInProgress, unfollo
        UsersAPI.Delete(user)
           .then(resultCode => {
             if (resultCode === 0) {
-              dispatch(unfollow(user.id));
+              dispatch(updateFollowStatus({ userId: user.id, followed: false }));
               dispatch(toggleFollowingInProgress({ userId: user.id, isFetching: false }));
             }
           });
@@ -69,7 +63,7 @@ export const { setCurrentPage, toggleIsFetch, toggleFollowingInProgress, unfollo
       UsersAPI.Post(user)
           .then(resultCode  => {
             if (resultCode === 0) {
-              dispatch(follow(user.id));
+              dispatch(updateFollowStatus({ userId: user.id, followed: true }));
               dispatch(toggleFollowingInProgress({ userId: user.id, isFetching: false }));
             }
           });
@@ -78,14 +72,13 @@ export const { setCurrentPage, toggleIsFetch, toggleFollowingInProgress, unfollo
 }
 
 export const getUsers = (currentPage, pageSize) =>{
-  return (dispatch) => {
+  return async (dispatch) => {
       dispatch(toggleIsFetch(true));
-        UsersAPI.GetUsers(currentPage, pageSize).then(data => {
+       const data = await UsersAPI.GetUsers(currentPage, pageSize)
           dispatch(toggleIsFetch(false));
-          
           dispatch(setUsers(data.items));
           dispatch(setTotalUsersCount(data.totalCount));
-        });
+        
   }
 }
 

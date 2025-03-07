@@ -11,8 +11,9 @@ function Header() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(Authorization()); 
-});
+    dispatch(Authorization());
+}, [dispatch]); 
+
 
   return (
     <div className={header.header}> 

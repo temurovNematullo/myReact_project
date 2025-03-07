@@ -6,11 +6,10 @@ const ProfileStatus = (props) => {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
-const isAuth = useSelector((state) => state.Auth.isAuth);
-
+    const isAuth = useSelector((state) => state.Auth.isAuth);
+    
     useEffect(() => {
         setStatus(props.status);
-        console.log("Компонент обновился!");
     }, [props.status]);
 
     const activateEditMode = () => {

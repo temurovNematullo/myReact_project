@@ -10,22 +10,22 @@ import ProfileStatus from "./ProfileStatus";
 import PostForm from "./PostForm";
 
 
-export default function MyPost(props) {
-  const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.Auth.isAuth);
+ function MyPost(props) {
+  console.log("Ререндер MyPosts")
+  console.log(props)
+  const dispatch = useDispatch()
+  const isAuth = useSelector((state) => state.Auth.isAuth)
   const posts = useSelector((state) => state.MainPage.postData)
- 
   const status = useSelector((state) => state.MainPage.status)
   const userProfileData = useSelector((state)=> state.MainPage.userProfile) 
-  const {userId} = props
-  
-  const authUserId = useSelector((state)=> state.Auth.userId)
-  console.log(authUserId)
+  const userId = props.userId
+  const authUserId = props.authUserId
+ 
+ 
   
   useEffect(() => {
     const currentUserId = userId || authUserId;
-    
-    console.log(currentUserId)
+
     if (currentUserId) {
       dispatch(getUserProfile(currentUserId));
       dispatch(getUserStatus(currentUserId));
@@ -96,7 +96,7 @@ export default function MyPost(props) {
 }
 
 
-
+export default React.memo(MyPost)
 
 
 

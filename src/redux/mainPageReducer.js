@@ -7,7 +7,7 @@ const initialState = {
   postData: [
     { id: 1, message: "Pixel art is my life)" },
     { id: 2, message: "Pixel I love PIXCEL)" },
-    { id: 3, message: "Pixel I love PIXCEL)" },
+ 
   ],
   newPostText: "HI BITCH;)",
   userProfile: {},
@@ -58,11 +58,9 @@ if (!userId) return;
 export const getUserStatus = (userId) => {
   return (dispatch) => {
     if (!userId) return;
-
-    console.log(`Запрос на статус пользователя с id: ${userId}`);
     ProfileAPI.GetStatus(userId)
   .then(status => {
-    console.log("✅ Ответ от сервера:", status); // Проверяем, что сервер что-то вернул
+    
     dispatch(setStatus(status));
   })
   .catch(error => {
