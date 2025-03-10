@@ -49,25 +49,23 @@ export const { setCurrentPage, toggleIsFetch, toggleFollowingInProgress, updateF
 
  export const getFollowing = (user) =>{
 
-     return (dispatch) => {dispatch(toggleFollowingInProgress({ userId: user.id, isFetching: true }));
+     return async (dispatch) => {dispatch(toggleFollowingInProgress({ userId: user.id, isFetching: true }));
       if (user.followed ) {
-       UsersAPI.Delete(user)
-          .then(resultCode => {
-            if (resultCode === 0) {
+      const result = await UsersAPI.Delete(user)
+            if (result === 0) {
               dispatch(updateFollowStatus({ userId: user.id, followed: false }));
-              dispatch(toggleFollowingInProgress({ userId: user.id, isFetching: false }));
+             
             }
-          });
-          
+         
       } else {
-      UsersAPI.Post(user)
-          .then(resultCode  => {
-            if (resultCode === 0) {
+        const result = await UsersAPI.Post(user)
+            if (result === 0) {
               dispatch(updateFollowStatus({ userId: user.id, followed: true }));
-              dispatch(toggleFollowingInProgress({ userId: user.id, isFetching: false }));
+              
             }
-          });
+            
       }
+      dispatch(toggleFollowingInProgress({ userId: user.id, isFetching: false }));
     }
 }
 

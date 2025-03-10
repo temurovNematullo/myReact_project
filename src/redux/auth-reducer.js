@@ -28,7 +28,7 @@ export const Authorization = () => {
         const data = await AuthAPI.AuthMe();
         if (data.resultCode === 0) {
             dispatch(setUserData({ ...data.data, isAuth: true }));
-            console.log(data);
+            
         } else {
             console.log("error you don't have access");
         }
@@ -55,8 +55,8 @@ export const Login = (email, password, rememberMe, setError, navigate) => {
 }
 
 export const Logout = () =>{
-    return(dispatch) =>{
-        AuthAPI.Logout().then(data => {
+    return async (dispatch) =>{
+      const data = await AuthAPI.Logout()
             console.log("Logout response:", data);
             if (data.resultCode === 0){
                 dispatch(setUserData({ userId: null, email: null, login: null, isAuth: false }));
@@ -64,10 +64,6 @@ export const Logout = () =>{
             }else {
                 console.log("Logout failed:", data); // ❌ Если не 0, увидим причину
             }
-        }).catch(error => {
-            console.log("Logout request failed:", error); // ❌ Ловим ошибку запроса
-        
-        })
     }
 }
 

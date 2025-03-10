@@ -26,9 +26,9 @@ const mainPageSlice = createSlice({
       state.postData.push(newPost); // ✅ Можно мутировать `state` благодаря `immer`
       state.newPostText = ""; // ✅ Очищаем поле после добавления поста
     },
-    // updatePost: (state, action) => {
-    //   state.newPostText = action.payload; // ✅ Обновляем `newPostText`
-    // },
+    deletePost: (state, action) => {
+      state.postData = state.postData.filter(post => post.id !== action.payload);
+    },
     setUserProfile: (state, action) => {
       state.userProfile = action.payload; 
     },
@@ -38,45 +38,43 @@ const mainPageSlice = createSlice({
   },
 });
 
-export const { addNewPost, updatePost, setUserProfile, setStatus } = mainPageSlice.actions;
+export const { addNewPost, updatePost, setUserProfile, setStatus, deletePost} = mainPageSlice.actions;
 
 // Экспортируем редьюсер
 export default mainPageSlice.reducer;
+
+
 export const getUserProfile = (userId) =>{
-  return (dispatch) =>{
+  return async (dispatch) =>{
 
 if (!userId) return;
     dispatch(toggleIsFetch(true));
-   ProfileAPI.GetProfileUser(userId).then(data => {
+   const data = await ProfileAPI.GetProfileUser(userId)
       dispatch(toggleIsFetch(false));
       dispatch(setUserProfile(data));
-    });
+  
     
 }
 }
 
 export const getUserStatus = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     if (!userId) return;
-    ProfileAPI.GetStatus(userId)
-  .then(status => {
+  const status = await ProfileAPI.GetStatus(userId)
+  
     
     dispatch(setStatus(status));
-  })
-  .catch(error => {
-    console.error("❌ Ошибка при получении статуса:", error.response?.data || error.message);
-  });
-
-  };
+  }
+ 
 };
 
 export const updateUserStatus = (status) => {
-  return (dispatch) => {
-    ProfileAPI.UpdateStatus(status).then(response => {
+  return async (dispatch) => {
+   const response = await ProfileAPI.UpdateStatus(status)
       if (response.resultCode === 0) {
         dispatch(setStatus(status));
       }
-    });
+
   };
 };
 

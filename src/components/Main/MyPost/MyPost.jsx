@@ -10,16 +10,14 @@ import ProfileStatus from "./ProfileStatus";
 import PostForm from "./PostForm";
 
 
- function MyPost(props) {
+ function MyPost({userId, authUserId}) {
   console.log("Ререндер MyPosts")
-  console.log(props)
   const dispatch = useDispatch()
   const isAuth = useSelector((state) => state.Auth.isAuth)
   const posts = useSelector((state) => state.MainPage.postData)
   const status = useSelector((state) => state.MainPage.status)
   const userProfileData = useSelector((state)=> state.MainPage.userProfile) 
-  const userId = props.userId
-  const authUserId = props.authUserId
+ 
  
  
   
@@ -58,7 +56,7 @@ import PostForm from "./PostForm";
             <p>{userProfileData.lookingForAJobDescription}</p>
           </div>
 
-<ProfileStatus authUserId={authUserId} status={status} profileId={props.userId}/>
+<ProfileStatus authUserId={authUserId} status={status} profileId={userId}/>
           
           <h3>Контакты:</h3>
           {userProfileData.contacts ? (
