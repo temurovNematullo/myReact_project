@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/myReact_project/static/css/main.6b64e645.css",
-    "main.js": "/myReact_project/static/js/main.5212592b.js",
+    "main.js": "/myReact_project/static/js/main.94cc34f6.js",
     "static/js/453.ec829578.chunk.js": "/myReact_project/static/js/453.ec829578.chunk.js",
     "static/css/911.22d45f48.chunk.css": "/myReact_project/static/css/911.22d45f48.chunk.css",
-    "static/js/911.f9f17c45.chunk.js": "/myReact_project/static/js/911.f9f17c45.chunk.js",
+    "static/js/911.ff85bfbb.chunk.js": "/myReact_project/static/js/911.ff85bfbb.chunk.js",
     "static/css/72.2aa2c022.chunk.css": "/myReact_project/static/css/72.2aa2c022.chunk.css",
     "static/js/72.0e2a9550.chunk.js": "/myReact_project/static/js/72.0e2a9550.chunk.js",
     "static/js/215.a0ddbcde.chunk.js": "/myReact_project/static/js/215.a0ddbcde.chunk.js",
@@ -16,10 +16,10 @@
     "static/media/loading.svg": "/myReact_project/static/media/loading.ac322186d51b0c02ffdd4f0774940571.svg",
     "index.html": "/myReact_project/index.html",
     "main.6b64e645.css.map": "/myReact_project/static/css/main.6b64e645.css.map",
-    "main.5212592b.js.map": "/myReact_project/static/js/main.5212592b.js.map",
+    "main.94cc34f6.js.map": "/myReact_project/static/js/main.94cc34f6.js.map",
     "453.ec829578.chunk.js.map": "/myReact_project/static/js/453.ec829578.chunk.js.map",
     "911.22d45f48.chunk.css.map": "/myReact_project/static/css/911.22d45f48.chunk.css.map",
-    "911.f9f17c45.chunk.js.map": "/myReact_project/static/js/911.f9f17c45.chunk.js.map",
+    "911.ff85bfbb.chunk.js.map": "/myReact_project/static/js/911.ff85bfbb.chunk.js.map",
     "72.2aa2c022.chunk.css.map": "/myReact_project/static/css/72.2aa2c022.chunk.css.map",
     "72.0e2a9550.chunk.js.map": "/myReact_project/static/js/72.0e2a9550.chunk.js.map",
     "215.a0ddbcde.chunk.js.map": "/myReact_project/static/js/215.a0ddbcde.chunk.js.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.6b64e645.css",
-    "static/js/main.5212592b.js"
+    "static/js/main.94cc34f6.js"
   ]
 }
