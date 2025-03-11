@@ -10,12 +10,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     // Всегда добавляем первую страницу
     pagination.push(1);
   
-    // Добавляем многоточие, если текущая страница далеко от начала
+    // многоточие, если текущая страница далеко от начала
     if (currentPage > maxPagesToShow + 1) {
       pagination.push(ellipsis);
     }
   
-    // Добавляем страницы вокруг текущей
+    // страницы вокруг текущей
     const startPage = Math.max(2, currentPage - maxPagesToShow);
     const endPage = Math.min(totalPages - 1, currentPage + maxPagesToShow);
   
@@ -23,7 +23,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       pagination.push(i);
     }
   
-    // Добавляем многоточие, если текущая страница далеко от конца
+    // многоточие, если текущая страница далеко от конца
     if (currentPage < totalPages - maxPagesToShow) {
       pagination.push(ellipsis);
     }
