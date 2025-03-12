@@ -1,10 +1,12 @@
+import React from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { validationRules } from "../../UTILS/validations";
 import log from "./login.module.css";
 import { useDispatch} from "react-redux";
 import { Login } from "../../redux/auth-reducer";
 import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
 
 
 const LoginForm = () => {
@@ -18,9 +20,16 @@ const LoginForm = () => {
         formState: { errors, touchedFields },
     } = useForm({ mode: "onBlur" });
 
+    const [captchaToken, setCaptchaToken] = useState(null);
+  
     const onSubmit = (data) => {
         console.log("Данные из формы", data);
-        dispatch(Login(data.email, data.password, data.rememberMe, setError, navigate));
+        if (!captchaToken) {
+            setError("captcha", { type: "manual", message: "Пройдите капчу!" });
+            return;
+        }
+        dispatch(Login(data.email, data.password, data.rememberMe, setError, navigate, captchaToken));
+      
     };
 
    
@@ -58,10 +67,19 @@ const LoginForm = () => {
                     <p>{errors._error.message}</p>
                 
             )}
+           <ReCAPTCHA
+        
+    sitekey="6LeBNvIqAAAAAF3mGv8NRxx46VKtH596-FF0eff1"
+    onChange={(token) => {
+     
+        setCaptchaToken(token);
+    }}
+/>
 
+            {errors.captcha && <p>{errors.captcha.message}</p>}
             <button className={log.logButton} type="submit">Войти</button>
         </form>
     );
 };
 
-export default LoginForm;
+export default React.memo(LoginForm);

@@ -10,6 +10,7 @@ import ProfileStatus from "./ProfileStatus";
 import PostForm from "./PostForm";
 import ProfilePhotoUploader from "../ProfilePhotoUploader"
 import UserContacts from "../UserContacts";
+import ProfileInfoForm from "../ProfileInfoForm";
 
  function MyPost({userId, authUserId}) {
   console.log("Ререндер MyPosts")
@@ -18,8 +19,10 @@ import UserContacts from "../UserContacts";
   const status = useSelector((state) => state.MainPage.status)
   const posts = useSelector((state) => state.MainPage.postData, shallowEqual);
   const userProfileData = useSelector((state) => state.MainPage.userProfile, shallowEqual);
- 
- 
+  const isOwner = Number(userId ?? authUserId) === Number(authUserId);
+
+
+
   
   useEffect(() => {
     const currentUserId = userId || authUserId;
@@ -38,22 +41,10 @@ import UserContacts from "../UserContacts";
     <div className={styles.profileContainer}>
       {userProfileData ? (
         <>
-          <div className={styles.profileHeader}>
-            <ProfilePhotoUploader/>
-            <h2>{userProfileData.fullName}</h2>
-            <p><strong>Обо мне:</strong> {userProfileData.aboutMe}</p>
-          </div>
-
-          <div className={styles.profileDetails}>
-            <p><strong>Ищу работу:</strong></p>
-            <p>{userProfileData.lookingForAJob ? "Да" : "Нет"}</p>
-
-            <p><strong>Описание работы:</strong></p>
-            <p>{userProfileData.lookingForAJobDescription}</p>
-          </div>
-
+         <ProfilePhotoUploader/>
+<ProfileInfoForm userProfileData={userProfileData} isOwner={isOwner}/>
 <ProfileStatus authUserId={authUserId} status={status} profileId={userId}/>
-        <UserContacts/>
+        <UserContacts isOwner={isOwner}/>
         </>
       ) : (
         <Preloader />

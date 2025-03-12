@@ -43,10 +43,6 @@ const mainPageSlice = createSlice({
 
 export const { addNewPost, updatePost, setUserProfile, setStatus, deletePost, updateUserPhoto} = mainPageSlice.actions;
 
-// Экспортируем редьюсер
-export default mainPageSlice.reducer;
-
-
 export const getUserProfile = (userId) =>{
   return async (dispatch) =>{
 
@@ -55,17 +51,13 @@ if (!userId) return;
    const data = await ProfileAPI.GetProfileUser(userId)
       dispatch(toggleIsFetch(false));
       dispatch(setUserProfile(data));
-  
-    
 }
 }
 
 export const getUserStatus = (userId) => {
   return async (dispatch) => {
     if (!userId) return;
-  const status = await ProfileAPI.GetStatus(userId)
-  
-    
+  const status = await ProfileAPI.GetStatus(userId) 
     dispatch(setStatus(status));
   }
  
@@ -91,3 +83,22 @@ export const uploadProfilePhoto = (file) => async (dispatch) => {
     console.error("Ошибка загрузки фото:", error);
   }
 };
+
+export const UploadUserProfile = (profileData) => async (dispatch, getState) => {
+
+  try {
+    const userId = getState().Auth.userId
+      const response = await ProfileAPI.uploadProfile(profileData);
+      if (response.resultCode === 0) {
+          // dispatch(setUserProfile(profileData)); 
+          console.log("Профиль успешно обновлен:", response.data);
+          dispatch(getUserProfile(userId)); // Вызов getUserProfile после обновления данных
+      } else {
+          console.error("Ошибка обновления профиля:", response.messages);
+      }
+  } catch (error) {
+      console.error("Ошибка при запросе к API:", error);
+  }
+};
+
+export default mainPageSlice.reducer;

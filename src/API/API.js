@@ -46,6 +46,10 @@ export const ProfileAPI = {
   
   return instance.put("/profile/photo", formData).then((response) => response.data);
 },
+uploadProfile(profileData) {
+  return instance.put(`profile`, profileData)
+      .then(response => response.data);
+}
 }
 
 export const AuthAPI = {
@@ -59,8 +63,8 @@ export const AuthAPI = {
      .then(response => response.data)
   },
   
-  Login (email, password, rememberMe) {
-    return instance.post("auth/login", {email, password, rememberMe})
+  Login (email, password, rememberMe, captcha = null) {
+    return instance.post("auth/login", {email, password, rememberMe, captcha})
     .then(response => response.data)
   },
   Logout () {

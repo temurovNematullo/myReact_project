@@ -35,17 +35,17 @@ export const Authorization = () => {
     };
 }
 
-export const Login = (email, password, rememberMe, setError, navigate) => {
+export const Login = (email, password, rememberMe, setError, navigate, captcha) => {
     return async (dispatch) => {
         try {
-            const data = await AuthAPI.Login(email, password, rememberMe);
+            const data = await AuthAPI.Login(email, password, rememberMe, captcha);
             if (data.resultCode === 0) {
                 await dispatch(Authorization());
                 navigate("/main");
             } else if (data.resultCode === 1) {
                 setError("_error", { type: "server", message: "Неверный логин или пароль" });
             } else if (data.resultCode === 10) {
-                setError("_error", { type: "server", message: "СЛИШКОМ МНОГО НЕВЕРНЫХ ПОПЫТОК ПРОЙДИ CAPTCH" });
+                setError("captcha", { type: "server", message: "Пройдите капчу!" });
             }
             console.log("CODE", data.resultCode);
         } catch (error) {
