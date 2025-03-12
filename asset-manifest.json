@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/myReact_project/static/css/main.6b64e645.css",
-    "main.js": "/myReact_project/static/js/main.de86ecc9.js",
+    "main.js": "/myReact_project/static/js/main.51e0e0f4.js",
     "static/js/453.ec829578.chunk.js": "/myReact_project/static/js/453.ec829578.chunk.js",
-    "static/css/346.2f83250f.chunk.css": "/myReact_project/static/css/346.2f83250f.chunk.css",
-    "static/js/346.b6f58bf9.chunk.js": "/myReact_project/static/js/346.b6f58bf9.chunk.js",
+    "static/css/322.7fb6a289.chunk.css": "/myReact_project/static/css/322.7fb6a289.chunk.css",
+    "static/js/322.90743c22.chunk.js": "/myReact_project/static/js/322.90743c22.chunk.js",
     "static/css/72.2aa2c022.chunk.css": "/myReact_project/static/css/72.2aa2c022.chunk.css",
     "static/js/72.0e2a9550.chunk.js": "/myReact_project/static/js/72.0e2a9550.chunk.js",
     "static/js/215.a0ddbcde.chunk.js": "/myReact_project/static/js/215.a0ddbcde.chunk.js",
@@ -16,10 +16,10 @@
     "static/media/loading.svg": "/myReact_project/static/media/loading.ac322186d51b0c02ffdd4f0774940571.svg",
     "index.html": "/myReact_project/index.html",
     "main.6b64e645.css.map": "/myReact_project/static/css/main.6b64e645.css.map",
-    "main.de86ecc9.js.map": "/myReact_project/static/js/main.de86ecc9.js.map",
+    "main.51e0e0f4.js.map": "/myReact_project/static/js/main.51e0e0f4.js.map",
     "453.ec829578.chunk.js.map": "/myReact_project/static/js/453.ec829578.chunk.js.map",
-    "346.2f83250f.chunk.css.map": "/myReact_project/static/css/346.2f83250f.chunk.css.map",
-    "346.b6f58bf9.chunk.js.map": "/myReact_project/static/js/346.b6f58bf9.chunk.js.map",
+    "322.7fb6a289.chunk.css.map": "/myReact_project/static/css/322.7fb6a289.chunk.css.map",
+    "322.90743c22.chunk.js.map": "/myReact_project/static/js/322.90743c22.chunk.js.map",
     "72.2aa2c022.chunk.css.map": "/myReact_project/static/css/72.2aa2c022.chunk.css.map",
     "72.0e2a9550.chunk.js.map": "/myReact_project/static/js/72.0e2a9550.chunk.js.map",
     "215.a0ddbcde.chunk.js.map": "/myReact_project/static/js/215.a0ddbcde.chunk.js.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.6b64e645.css",
-    "static/js/main.de86ecc9.js"
+    "static/js/main.51e0e0f4.js"
   ]
 }
