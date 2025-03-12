@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/myReact_project/static/css/main.6b64e645.css",
-    "main.js": "/myReact_project/static/js/main.3d78747b.js",
+    "main.js": "/myReact_project/static/js/main.43fa1156.js",
     "static/js/453.ec829578.chunk.js": "/myReact_project/static/js/453.ec829578.chunk.js",
     "static/css/322.7fb6a289.chunk.css": "/myReact_project/static/css/322.7fb6a289.chunk.css",
     "static/js/322.21b59089.chunk.js": "/myReact_project/static/js/322.21b59089.chunk.js",
@@ -9,14 +9,14 @@
     "static/js/72.0e2a9550.chunk.js": "/myReact_project/static/js/72.0e2a9550.chunk.js",
     "static/js/215.a0ddbcde.chunk.js": "/myReact_project/static/js/215.a0ddbcde.chunk.js",
     "static/css/21.a695c00c.chunk.css": "/myReact_project/static/css/21.a695c00c.chunk.css",
-    "static/js/21.3ef2ee1a.chunk.js": "/myReact_project/static/js/21.3ef2ee1a.chunk.js",
+    "static/js/21.473b6d93.chunk.js": "/myReact_project/static/js/21.473b6d93.chunk.js",
     "static/js/858.40825c09.chunk.js": "/myReact_project/static/js/858.40825c09.chunk.js",
     "static/media/samurai.png": "/myReact_project/static/media/samurai.34ca7aafbc16c3cca061.png",
     "static/media/logoreact.png": "/myReact_project/static/media/logoreact.5abfa9d8ca545b2a2e38.png",
     "static/media/loading.svg": "/myReact_project/static/media/loading.ac322186d51b0c02ffdd4f0774940571.svg",
     "index.html": "/myReact_project/index.html",
     "main.6b64e645.css.map": "/myReact_project/static/css/main.6b64e645.css.map",
-    "main.3d78747b.js.map": "/myReact_project/static/js/main.3d78747b.js.map",
+    "main.43fa1156.js.map": "/myReact_project/static/js/main.43fa1156.js.map",
     "453.ec829578.chunk.js.map": "/myReact_project/static/js/453.ec829578.chunk.js.map",
     "322.7fb6a289.chunk.css.map": "/myReact_project/static/css/322.7fb6a289.chunk.css.map",
     "322.21b59089.chunk.js.map": "/myReact_project/static/js/322.21b59089.chunk.js.map",
@@ -24,11 +24,11 @@
     "72.0e2a9550.chunk.js.map": "/myReact_project/static/js/72.0e2a9550.chunk.js.map",
     "215.a0ddbcde.chunk.js.map": "/myReact_project/static/js/215.a0ddbcde.chunk.js.map",
     "21.a695c00c.chunk.css.map": "/myReact_project/static/css/21.a695c00c.chunk.css.map",
-    "21.3ef2ee1a.chunk.js.map": "/myReact_project/static/js/21.3ef2ee1a.chunk.js.map",
+    "21.473b6d93.chunk.js.map": "/myReact_project/static/js/21.473b6d93.chunk.js.map",
     "858.40825c09.chunk.js.map": "/myReact_project/static/js/858.40825c09.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b64e645.css",
-    "static/js/main.3d78747b.js"
+    "static/js/main.43fa1156.js"
   ]
 }
