@@ -1,3 +1,4 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 import { addNewPost} from "../../../redux/mainPageReducer";
 import { useDispatch } from "react-redux";
@@ -36,4 +37,4 @@ import { validationRules } from "../../../UTILS/validations";
     );
   };
 
-  export default PostForm
+  export default React.memo(PostForm);

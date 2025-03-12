@@ -49,4 +49,4 @@ const ProfileStatus = (props) => {
     );
 };
 
-export default ProfileStatus;
+export default React.memo(ProfileStatus);

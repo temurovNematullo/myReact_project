@@ -10,7 +10,7 @@ const LoginForm = lazy(() => import("../Login/login"))
 
 export default function SidebarRouter() {
   return (
-    <Suspense fallback={<div><Preloader /></div>}>
+    <Suspense fallback={<Preloader/>}>
       <Routes>
         <Route element={<ProtectedRoute allowed="private"/>}>
           <Route path="/main" element={<Main />} />

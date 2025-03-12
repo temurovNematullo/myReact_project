@@ -39,7 +39,13 @@ export const ProfileAPI = {
  UpdateStatus(status){
   return instance.put( `profile/status`,{status}).then
   (response=> response.data)
- }
+ },
+ updatePhoto(file) {
+  const formData = new FormData();
+  formData.append("image", file); 
+  
+  return instance.put("/profile/photo", formData).then((response) => response.data);
+},
 }
 
 export const AuthAPI = {

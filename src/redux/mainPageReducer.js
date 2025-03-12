@@ -35,10 +35,13 @@ const mainPageSlice = createSlice({
     setStatus: (state, action) => {
       state.status = action.payload;
     },
+    updateUserPhoto(state, action) {
+      state.userProfile.photos.large = action.payload; // ✅ Обновляем фото в стейте
+    }
   },
 });
 
-export const { addNewPost, updatePost, setUserProfile, setStatus, deletePost} = mainPageSlice.actions;
+export const { addNewPost, updatePost, setUserProfile, setStatus, deletePost, updateUserPhoto} = mainPageSlice.actions;
 
 // Экспортируем редьюсер
 export default mainPageSlice.reducer;
@@ -78,4 +81,13 @@ export const updateUserStatus = (status) => {
   };
 };
 
-
+export const uploadProfilePhoto = (file) => async (dispatch) => {
+  try {
+    const data = await ProfileAPI.updatePhoto(file);
+    if (data.resultCode === 0) {
+      dispatch(updateUserPhoto(data.data.photos.large)); // ✅ Диспатчим новое фото
+    }
+  } catch (error) {
+    console.error("Ошибка загрузки фото:", error);
+  }
+};

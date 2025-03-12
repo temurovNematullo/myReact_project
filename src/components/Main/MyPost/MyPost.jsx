@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useEffect } from "react";
 import mypost from "./MyPost.module.css";
 import Post from "./Post/Post";
@@ -8,16 +8,16 @@ import { getUserProfile, getUserStatus } from "../../../redux/mainPageReducer";
 import styles from "./Post/Profile.module.css";
 import ProfileStatus from "./ProfileStatus";
 import PostForm from "./PostForm";
-
+import ProfilePhotoUploader from "../ProfilePhotoUploader"
+import UserContacts from "../UserContacts";
 
  function MyPost({userId, authUserId}) {
   console.log("Ререндер MyPosts")
   const dispatch = useDispatch()
   const isAuth = useSelector((state) => state.Auth.isAuth)
-  const posts = useSelector((state) => state.MainPage.postData)
   const status = useSelector((state) => state.MainPage.status)
-  const userProfileData = useSelector((state)=> state.MainPage.userProfile) 
- 
+  const posts = useSelector((state) => state.MainPage.postData, shallowEqual);
+  const userProfileData = useSelector((state) => state.MainPage.userProfile, shallowEqual);
  
  
   
@@ -29,7 +29,7 @@ import PostForm from "./PostForm";
       dispatch(getUserStatus(currentUserId));
      
     }
-  }, [userId, authUserId, dispatch]);
+  }, [userId, authUserId]);
    
 
   return (
@@ -39,11 +39,7 @@ import PostForm from "./PostForm";
       {userProfileData ? (
         <>
           <div className={styles.profileHeader}>
-            <img
-              className={styles.profileImage}
-              src={userProfileData.photos?.large}
-              alt="Avatar"
-            />
+            <ProfilePhotoUploader/>
             <h2>{userProfileData.fullName}</h2>
             <p><strong>Обо мне:</strong> {userProfileData.aboutMe}</p>
           </div>
@@ -57,23 +53,7 @@ import PostForm from "./PostForm";
           </div>
 
 <ProfileStatus authUserId={authUserId} status={status} profileId={userId}/>
-          
-          <h3>Контакты:</h3>
-          {userProfileData.contacts ? (
-            <div className={styles.contactsList}>
-              {Object.entries(userProfileData.contacts).map(([key, value]) =>
-                value ? (
-                  <div key={key} className={styles.contactItem}>
-                    <span><strong>{key}:</strong></span>
-                    <a href={value} target="_blank" rel="noopener noreferrer">{value}</a>
-                  </div>
-                ) : null
-              )}
-            </div>
-          ) : (
-            <p>Контакты отсутствуют</p> // ✅ Если `contacts === null`, показываем сообщение
-          )}
-
+        <UserContacts/>
         </>
       ) : (
         <Preloader />
